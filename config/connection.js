@@ -13,9 +13,9 @@ if (process.env.JAWSDB_URL) {
 else {
 	// default db config for local db
 	config = {
-		host: "localhost",
-		user: "root",
-		password: "Zy-phr_24",
+		host: "gtizpe105piw2gfq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+		user: "w06ch16eegzl4f6r",
+		password: "g5960uxrua31k7xl",
 		database: "burgers_db"
 	};
 }
