@@ -15,7 +15,7 @@ else {
 	config = {
 		host: "localhost",
 		user: "root",
-		password: "",
+		password: "Zy-phr_24",
 		database: "burgers_db"
 	};
 }
