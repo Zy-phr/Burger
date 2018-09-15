@@ -16,8 +16,6 @@ app.use(Express.static("public"));
 // Parse application/x-www-form-urlencoded
 app.use(BodyParser.urlencoded({ extended: false }));
 
-
-
 // Setup Handlebars
 app.engine("handlebars", Exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
