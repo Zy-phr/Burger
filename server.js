@@ -1,30 +1,31 @@
-// =====================================================
-// connection.js
-// =====================================================
+// ==============================================================
+// DEPENDENCIES
+// ==============================================================
+const Express = require("express");
+const BodyParser = require("body-parser");
+const MethodOverride = require("method-override");
+const Exphbs = require("express-handlebars");
+const Routes = require("./controllers/burgers_controller.js");
 
-const Mysql = require("mysql");
+let app = Express();
+let PORT = process.env.PORT || 8080;
 
-// connection configuration
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(Express.static("public"));
 
-let config;
+// Parse application/x-www-form-urlencoded
+app.use(BodyParser.urlencoded({ extended: false }));
 
-// db connection config using JawsDB
+// implement method override middleware
+app.use(MethodOverride("_method"));
 
-if (process.env.JAWSDB_URL) {
-	config = process.env.JAWSDB_URL;
-}
-else {
+// Setup Handlebars
+app.engine("handlebars", Exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-    // default db config for local db
-    
-	config = {
-		host: "localhost",
-		user: "root",
-		password: "Zy-phr_24",
-		database: "burgers_db"
-	};
-}
+// connecting router
+app.use("/", Routes);
 
-// export connection to burgers_db
-
-module.exports = Mysql.createConnection(config);
+app.listen(PORT, () => {
+	console.log("Server listening on: http://localhost:%s", PORT);
+});
